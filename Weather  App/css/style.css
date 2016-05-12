@@ -1,0 +1,181 @@
+/*====STYLESHEET=====*/
+
+body {
+  background: #233;
+  color: whitesmoke;
+  font-family: "Raleway", cursuive;
+  text-align: center;
+  overflow: hidden;
+}
+
+.title {
+  font-size: 5em;
+  font-weight: 400;
+  white-space: nowrap;
+  z-index: 50;
+}
+
+.icon {
+  width: 150%;
+  padding: 0;
+  position: relative;
+  z-index: 50;
+}
+
+.in {
+  font-size: 50%;
+  line-height: 25%;
+  position: relative;
+}
+
+.weatherInfo {
+  text-align: center;
+  z-index: 45;
+}
+
+.temp {
+  font-family: 'Sirin Stencil';
+  font-size: 8rem;
+  font-weight: 100;
+  opacity: 0.4;
+  z-index: 1;
+}
+
+#temp::after {
+  content: '\00b0 F';
+  padding: 0;
+  font-size: .75em;
+  vertical-align: super;
+}
+
+.weather {
+  font-size: 1.25em;
+  opacity: 0.7;
+}
+
+
+/*=====CLOUDY ANIMATION======*/
+
+@keyframes cloudFloat {
+  0% {
+    transform: translateX(-200%);
+  }
+  100% {
+    transform: translateX(300%);
+  }
+}
+
+.clouds {
+  content: "Clouds";
+  animation: cloudFloat 60s linear infinite alternate;
+  font-size: 3em;
+  position: absolute;
+  width: 400px;
+  margin: 0 auto;
+  padding: 0;
+  top: 25%;
+  color: rgba(38, 45, 70, 0.6);
+  border-radius: 60px;
+  transform: translateX(-200%);
+  text-shadow: -20px 20px 3px rgba(240, 240, 255, 0.6), 20px 20px 3px rgba(230, 230, 230, 0.6), -20px -20px 3px rgba(255, 255, 255, 0.6), 20px -20px 3px rgba(255, 255, 255, 0.6), 0 15px 30px rgba(240, 240, 255, 0.6), 0 -7px 30px rgba(240, 240, 255, 0.6), 20px 0 30px rgba(240, 240, 255, 0.6), -12px 0 30px rgba(240, 240, 255, 0.6), 8px 20px 20px rgb(119, 136, 153), -20px 10px 20px rgb(119, 136, 153), 12px -20px 20px rgb(119, 136, 153);
+}
+
+
+/*=========CLEAR AND SUNNY ANIMATION=========*/
+
+@keyframes clearRise {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(10%);
+  }
+}
+
+.clear {
+  height: 225px;
+  width: 225px;
+  font-size: 3em;
+  color: rgb(255, 255, 220);
+  border-radius: 50%;
+  overflow: hidden;
+  vertical-align: middle;
+  padding-top: 20px;
+  text-shadow: 0 0 220px rgb(255, 255, 150), 0 0 150px rgb(255, 255, 150), 0 0 60px rgb(255, 255, 150), 0 0 10px rgb(255, 255, 150);
+}
+
+.clear {
+  color: rgba(255, 255, 150, 0.2);
+  animation: clearRise 45s linear infinate alternate;
+}
+
+/*=========Rain Animation============*/
+@keyframes flying {
+  0% {
+    transform: translate(12000%, -4000%) rotate(20deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(0,0) rotate(20deg);
+    opacity: 1;
+  }
+}
+.flying {
+  position: absolute;
+  background-color: #FFF;
+  height: 20px;
+  width: 2px;
+  transform: rotate(20deg);
+  animation: 1.5s flying infinite linear;
+  opacity: 0;
+}
+
+@keyframes splashing {
+  from {
+    opacity: 1;
+    transform: scale(0);
+  }
+}
+
+.splashing {
+  position: absolute;
+  background-color: #FFF;
+  height: 20px;
+  width: 80px;
+  margin-left: -40px;
+  margin-top: 20px;
+  border-radius: 100%;
+  animation: 1.5s splashing infinite linear;
+  animation: 1.5s;
+  opacity: 0;
+}
+
+
+
+.mist {
+  font-family: "Raleway";
+}
+
+.rain {
+  font-family: "Fascinate Inline";
+}
+
+.haze {
+  font-family: "Fredericka the Great";
+}
+
+.fog {
+  font-family: "Astloch";
+}
+
+.snow {
+  font-family: "Frijole";
+}
+
+.clear {
+  font-family: "Londria Shadow";
+}
+
+.clouds {
+  font-family: "Monoton";
+}
