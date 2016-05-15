@@ -1,4 +1,24 @@
 /*====STYLESHEET=====*/
+.navbar-brand {
+    padding-top: 0;
+}
+
+.units {
+    margin-top: 1rem;
+}
+
+.jumbotron {
+    background-color: #233;
+}
+
+/*.row.equal-height {
+    overflow: hidden;
+}
+
+.row.equal-height [class*='col-'] {
+    margin-bottom: -999999px;
+    padding-bottom: 999999px;
+}*/
 
 body {
   background: #233;
@@ -9,14 +29,14 @@ body {
 }
 
 .title {
-  font-size: 5em;
+  font-size: rem;
   font-weight: 400;
   white-space: nowrap;
   z-index: 50;
 }
 
 .icon {
-  width: 150%;
+  width: 200%;
   padding: 0;
   position: relative;
   z-index: 50;
@@ -34,14 +54,20 @@ body {
 }
 
 .temp {
-  font-family: 'Sirin Stencil';
-  font-size: 8rem;
-  font-weight: 100;
-  opacity: 0.4;
+  font-family: 'Limelight';
+  font-size: 6rem;
+  opacity: 0.6;
   z-index: 1;
 }
 
-#temp::after {
+.celsius::after {
+  content: '\00b0 C';
+  padding: 0;
+  font-size: .75em;
+  vertical-align: super;
+}
+
+.fahrenheit::after {
   content: '\00b0 F';
   padding: 0;
   font-size: .75em;
@@ -176,6 +202,6 @@ body {
   font-family: "Londria Shadow";
 }
 
-.clouds {
+.803 {
   font-family: "Monoton";
 }
