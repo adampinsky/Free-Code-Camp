@@ -32,9 +32,9 @@ function setWeatherInfo(data) {
     var t = Math.round(fahrenheit);
     
     //set dynamic color of .temp text
-    var setTempColor(t) {
+    function setTempColor(t) {
         var tColor;
-        switch (t) {
+        switch t {
             case t > 105:
                 tColor = 'rgb(125,0,0)';
                 break;
