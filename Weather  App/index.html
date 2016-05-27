@@ -18,32 +18,25 @@
         <nav class='navbar navbar-inverse navbar-fixed-bottom'>
             <!-- .container -->
             <div class='container'>
-                <div id='units' class='btn-group navbar-left units' data-toggle='buttons'>
-                    <label id='labelF' class='btn navbar-btn btn-default btn-lg active'>
-                        <input id='radioF' type='radio' class='unit-of-measure' name='unitOfMeasure' autocompleaete='off' checked>&deg;F
-                    </label>
-                    <label id='labelC' class='btn navbar-btn btn-default btn-lg'>
-                        <input id='radioC' type='radio' class='unit-of-measure' name='unitOfMeasure' autocompleaete='off'>&deg;C
-                    </label>
+                <div class="navbar-btn btn-group btn-toggle navbar-left">
+                    <button class="navbar-btn btn btn-lg btn-default">&deg;C</button>
+                    <button class="navbar-btn btn btn-lg btn-info active">&deg;F</button>
                 </div>
-                <h4 class="navbar-right navbar-text text-right">
-                    <a class='navbar-brand navbar-link' href="http://openweathermap.org"><small>Powered by</small><br>OpenWeatherMap.org</a>
-                </h4>
-            </div>
-            <!-- /.container -->
+                <a class='navbar-brand navbar-text navbar-link navbar-right text-right' href="http://openweathermap.org"><small>Powered by</small><br>OpenWeatherMap.org</a>
+            </div><!-- /.container -->
         </nav>
         <!-- /navbar -->
         <!-- .jumbotron -->
         <div class='jumbotron bg-info'>
             <div class='container'>
                 <div class='row equal-height'>
-                    <h1 id='title' class="title col-md-6 col-md-push-3">H<span><img id="icon"/></span>w's the<br/>
+                    <h1 id='title' class="title col-sm-6 col-sm-push-3">H<span><img id="icon"/></span>w's the<br/>
                         Weather<br/>
                         <span class="in">in</span><br/>
-                        <span id="city"></span>
+                        <span id="city"></span>?
                     </h1>
-                    <h1 id="temp" class="temp fahrenheit col-md-3 col-md-pull-6"></h1>
-                    <h1 id="weather" class="weather col-md-3"></h1>
+                    <h1 id="temp" class="temp f col-sm-3 col-sm-pull-6 col-xs-6"></h1>
+                    <h1 id="weather" class="weather col-sm-3" col-xs-6></h1>
                 </div>
                 <!--/.row -->
             </div>

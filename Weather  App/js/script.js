@@ -4,95 +4,55 @@ var API_BASE = 'http://api.openweathermap.org/data/2.5/weather',
     UNITS = '&units=imperial',
     IMPERIAL = true;
 
+//*************Set Text and Color of .temp Text Dynamiclly*****************
+function setTempColor(t) {
+    if (t > 105) {return 'rgb(125,0,0)';}
+    else if (t > 90) {return 'rgb(250,0,0)';}
+    else if (t > 75) {return 'rgb(250,125,125)';}
+    else if (t > 55) {return 'rgb(250,250,125)';}
+    else if (t > 35) {return 'rgb(125,250,250)';}
+    else if (t > 15) {return 'rgb(0,125,250)';}
+    else {return 'rgb(0,0,125)';}
+}
 
-
-//*************Fahrenheit/Celsius Selection Switch Event Handler************
-
+function setTemp(t) {
+    if ($('#temp').hasClass('c')) {
+        t = ((t-32)*5)/9;
+    }
+    $('#temp').html(t.toFixed());
+}
 
 //*************Set the DOM with JSON data****called by .getWeather()*************
 function setWeatherInfo(data) {
-  //get and set .icon img
     var icon = data.weather[0].icon;
-    var iconURL = "http://openweathermap.org/img/w/" + icon + ".png";
-    $('#icon').attr('src', iconURL);
-  //get and set .city text
-    $('#city').html(data.name);
-  //get and set .weather text    
-   var weatherID = data.weather[0].id;
-   switch(weatherID) {
-           
-   } $('#weather').addClass(data.weather[0].id);
-    $('#weather').html(data.weather[0].main);
+    var city = data.name;
+    var temp = data.main.temp;//fahrenheit
+    var weather = data.weather[0].main;
+    var tempVal = parseFloat(temp);
     
-  //get and set .temp text
-    var fahrenheit = data.main.temp;
-    var celsius = ((fahrenheit-32)*5)/9;
-    var fRadio = $('#radioF');
-    var cRadio = $('#radioC');
-    var t = Math.round(fahrenheit);
+    $('#icon').attr('src', 'http://openweathermap.org/img/w/'+icon+'.png');
     
-    //set dynamic color of .temp text
-    function setTempColor(t) {
-        var tColor;
-        switch t {
-            case t > 105:
-                tColor = 'rgb(125,0,0)';
-                break;
-            case t > 90:
-                tColor = 'rgb(250,0,0)';
-                break;
-            case t > 75:
-                tColor = 'rgb(250,125,125)';
-                break;
-            case t > 55:
-            default:
-                tColor = 'rgb(250,250,125)';
-                break;
-            case t > 35:
-                tColor = 'rgb(125,250,250)';
-                break;
-            case t > 15:
-                tColor = 'rgb(0,125,250)';
-                break;
-            case t <= 15:
-                tColor = 'rgb(0,0,125)';
-                break;
-        }
-        $('#temp').css('color', tColor);
-    }
-   
-   // handle radio units of measure switch
-    $('input[type=radio]').each(function() {
-        $(this).addEventListener('click', function() {
-            $('label').each(function() {
-                $(this).toggleClass('active');
-            });
-            if($('#radioC') === $(this)) {
-                $('#radioF').prop('checked', false);
-                $('#radioC').prop('checked', true);
-                t = Math.round(celsius).toString;
-            } else {
-                $('#radioC').prop('checked', false);
-                $('#radioF').prop('checked', true);
-                t = Math.round(fahrenheit).toString;
-            }
-            $('#temp').html(t);
-            setTempColor(t);
-        });
+    $('#city').html(city);
+
+    $('#weather').html(weather);
+    
+    var tempColor = setTempColor(temp);
+    $('#temp').html(tempVal.toFixed()).css('color', tempColor);
+    
+    $('.btn-toggle').click(function() {
+        $(this).find('.btn').toggleClass('btn-default btn-info active');
+        $('#temp').toggleClass('f c');
+        setTemp(tempVal);
     });
-  
-    $('#temp').html(t);
-    setTempColor(t);
+    // handle radio units of measure switch
 }
 
 //****************** call to Weather API ***** called by .success() ****************
 function getWeather(lat, lon) {
     var API_URL = API_BASE + "?lat=" + lat + "&lon=" + lon + API_KEY + UNITS;
     $.get(API_URL, function(data) {
-        console.log(data);
-    setWeatherInfo(data);
+        setWeatherInfo(data);
     });
-
 }
 
 //************** navigator callback function *************
